@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+        <link rel ="stylesheet" type="text/css" href="style.css">
+        <title>Live Scoreboard</title>
+        <script type="module" src="./index.js"></script>
+		<script src="./test.js"></script>
+		<script>			
+			function drawCanvas(splitScreen) {
+				const LED = "new"
+				if (splitScreen == true) {
+					if (LED == "new") {
+						document.getElementById("Scoreboard").innerHTML="<canvas id='background' width='1024' height='358'><\/canvas>";
+						document.getElementById("Scoreboard2").innerHTML="<canvas id='background' width='1024' height='358'><\/canvas>";
+					} else {
+						document.getElementById("Scoreboard").innerHTML="<canvas id='background' width='768' height='288'><\/canvas>";
+						document.getElementById("Scoreboard2").innerHTML="<canvas id='background' width='768' height='288'><\/canvas>";
+					}	
+				} else {
+					if (LED == "new") {
+						document.getElementById("Scoreboard").innerHTML="<canvas id='background' width='1024' height='716'><\/canvas>";
+						document.getElementById("Scoreboard2").innerHTML="";
+					} else {
+						document.getElementById("Scoreboard").innerHTML="<canvas id='background' width='768' height='576'><\/canvas>";
+						document.getElementById("Scoreboard2").innerHTML="";
+					}	
+				}
+			}	
+		</script>
+    </head>
+	
+    <body onload="bodyLoad()">
+	<div class="navbar">
+		<a href="#home">Home</a>
+
+		<div class="dropdown">
+			<button class="dropbtn">Select Mode
+				<i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="javascript:drawCanvas(false);">Single Game</a>
+				<a href="javascript:drawCanvas(true);">Two Games</a>
+			</div>
+		</div> 
+		
+		<div class="dropdown">
+			<button class="dropbtn">Select Game
+				<i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content" id="gameList">
+			</div>
+		</div>
+	</div>
+		
+	<div class="dist">
+	</div>
+
+	<script>
+	// Body onload
+         function bodyLoad() {
+			 // STEP 0: draw empty canvas
+			 drawCanvas(false);
+			 
+			 // STEP 1: sign in firebase anonymously
+			 signInFirebaseAnonymously();
+			 
+			 // STEP 2: get all games from firestore database, which are live right now
+			 populateDropDownMenuWithLiveGames();
+			 
+			 // STEP 3: show Scoreboard		 
+			 if (showScoreboard == true) {
+				 
+				 //Scoreboard(listWithLiveGames[0]);
+			 }
+         }
+	</script>
+		
+		
+	<script>
+		// Set your events up in JavaScript, not with HTML event attributes
+		document.addEventListener("click", function(event) {
+			// Loop over all the menus
+			document.querySelectorAll(".dropdown-content").forEach(function(dd) {
+				dd.classList.remove("show"); // Hide the menu
+			});
+
+			// If the clicked element was a button
+			if (event.target.classList.contains('dropbtn')) {
+				// Show just the menu that corresponds to the clicked button
+				event.target.nextElementSibling.classList.toggle("show");
+			} 
+		});	
+	</script>
+		
+
+		
+		
+<!--		/* When the user clicks on the button, 
+		toggle between hiding and showing the dropdown content */
+		/*function myModeFunction() {
+			document.getElementById("selectMode").classList.toggle("show");
+		}
+
+		// Close the dropdown if the user clicks outside of it
+		window.onclick = function(e) {
+			if (!e.target.matches('.dropbtn')) {
+				var myDropdown = document.getElementById("selectMode");
+				if (myDropdown.classList.contains('show')) {
+					myDropdown.classList.remove('show');
+				}
+			}
+		}*/
+		
+		/* When the user clicks on the button, 
+		toggle between hiding and showing the dropdown content */
+		/*function myFunction() {
+			document.getElementById("selectGame").classList.toggle("show");
+		}
+
+		// Close the dropdown if the user clicks outside of it
+		window.onclick = function(e) {
+			if (!e.target.matches('.dropbtn')) {
+				var myDropdown = document.getElementById("selectGame");
+				if (myDropdown.classList.contains('show')) {
+					myDropdown.classList.remove('show');
+				}
+				myDropdown.value = valueOf
+				window.aler(myDropdown.value)
+			}
+		}*/
+-->	
+		
+		
+        <div id="Scoreboard">
+			<!-- choose image size in depence of LED-Wall -->		
+        </div>
+		<div id="Scoreboard2">
+	
+        </div>
+        <!--<p>Hello World, it's cold out there</p> -->
+
+    </body>
+</html>
