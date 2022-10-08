@@ -12,10 +12,10 @@
 				if (splitScreen == true) {
 					if (LED == "new") {
 						document.getElementById("Scoreboard").innerHTML="<canvas id='background' width='1024' height='358'><\/canvas>";
-						document.getElementById("Scoreboard2").innerHTML="<canvas id='background' width='1024' height='358'><\/canvas>";
+						// document.getElementById("Scoreboard2").innerHTML="<canvas id='background' width='1024' height='358'><\/canvas>";
 					} else {
 						document.getElementById("Scoreboard").innerHTML="<canvas id='background' width='768' height='288'><\/canvas>";
-						document.getElementById("Scoreboard2").innerHTML="<canvas id='background' width='768' height='288'><\/canvas>";
+						// document.getElementById("Scoreboard2").innerHTML="<canvas id='background' width='768' height='288'><\/canvas>";
 					}	
 				} else {
 					if (LED == "new") {
@@ -36,7 +36,7 @@
 
 		<div class="dropdown">
 			<button class="dropbtn">Select Mode
-				<i class="fa fa-caret-down"></i>
+				
 			</button>
 			<div class="dropdown-content">
 				<a href="javascript:drawCanvas(false);">Single Game</a>
