@@ -1,2 +1,2 @@
-# indiansScorboard
+# indiansScoreboard
 Dornbirn Indians Scoreboard
